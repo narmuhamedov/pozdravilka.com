@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>День Святого Валентина</title>
+</head>
+<body>
+    <div class="valentine-card">
+        <button onclick="showMessage()">Нажми на меня</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://elements-video-cover-images-0.imgix.net/42e4a78a-f832-48e2-bdf5-5ddd3bbe6bf9/video_preview/video_preview_0000.jpg?auto=compress%2Cformat&h=394&w=700&fit=min&s=ac7237f8f7f616d445976e596a395538");
+}
+
+.valentine-card {
+    position: relative;
+    width: 80%;
+    max-width: 300px;
+    height: 400px;
+    background-image: url('https://i.pinimg.com/736x/04/a3/7b/04a37bd3c89c2492b9d858e66a31ffcf.jpg'); /* Замените на свое изображение с сердечками */
+    background-size: cover;
+    background-position: center; /* Добавлено для выравнивания по центру */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    font-size: 18px;
+    font-family: 'cursive'; /* Замените на ваш шрифт */
+    background-color: #ff5e78;
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Закругленные углы */
+    cursor: pointer;
+}
+
+.message {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    font-size: 18px;
+    font-family: 'cursive'; /* Замените на ваш шрифт */
+    background-color: rgba(255, 51, 51, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    opacity: 0;
+    animation: showMessage 0.5s ease-in-out forwards;
+    z-index: 1;
+}
+
+@keyframes showMessage {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+
+</style>
+
+<script>
+    function showMessage() {
+    const valentineCard = document.querySelector('.valentine-card');
+    const message = document.createElement('div');
+    message.classList.add('message');
+    const name = "Ширин";
+    message.innerHTML = `<p>Поздравляю тебя, ${name}, с Днем Святого Валентина!</p>`;
+
+    valentineCard.appendChild(message);
+
+    setTimeout(() => {
+        message.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+        message.classList.remove('show');
+        setTimeout(() => {
+            valentineCard.removeChild(message);
+        }, 500);
+    }, 5000);
+}
+
+</script>
