@@ -57,7 +57,7 @@
         justify-content: flex-end;
         align-items: center;
         padding: 30px;
-        gap: 20px; /* расстояние между элементами */
+        gap: 20px;
     }
 
     .rotating-emojis {
@@ -110,10 +110,7 @@
     }
 
     .message {
-        position: absolute;
-        top: 28%;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
         background-color: rgba(0, 0, 0, 0.7);
         padding: 25px;
         border-radius: 25px;
@@ -124,17 +121,16 @@
         animation: fadeIn 1s ease-in-out forwards;
         line-height: 1.6;
         max-width: 90%;
+        margin-bottom: 20px;
         z-index: 1;
     }
 
     @keyframes fadeIn {
         0% {
             opacity: 0;
-            transform: translate(-50%, -30px);
         }
         100% {
             opacity: 1;
-            transform: translate(-50%, 0);
         }
     }
     </style>
@@ -166,7 +162,12 @@
             😴💤💫🌠🌜</p>
         `;
 
-        card.appendChild(message);
+        card.insertBefore(message, card.querySelector('button'));
+
+        setTimeout(() => {
+            message.style.opacity = '0';
+            message.style.transition = 'opacity 0.5s ease-in-out';
+        }, 7500);
 
         setTimeout(() => {
             message.remove();
