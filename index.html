@@ -1,138 +1,161 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Спокойной ночи, Марсель 🌙</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-     body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background:url('https://mir-kliparta.com/uploads/posts/2013-07/1373889765_1b5jvritfjr69wy.jpeg');
-        background-size: cover;
-        overflow: hidden;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    .stars {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        overflow: hidden;
-        pointer-events: none;
-    }
-
-    .stars::after {
-        content: '';
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background: transparent url('https://99px.ru/sstorage/86/2016/03/image_862903162236248828026.gif') repeat;
-        background-size: contain;
-        opacity: 0.3;
-        animation: moveStars 60s linear infinite;
-    }
-
-    @keyframes moveStars {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-50%); }
-    }
-
-    .card {
-        position: relative;
-        width: 90%;
-        max-width: 420px;
-        height: 580px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 30px;
-        box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 30px;
-        gap: 20px;
-    }
-
-    .rotating-emojis {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .rotating-emojis span {
-        display: inline-block;
-        animation: rotateEmoji 3s linear infinite;
-        font-size: 36px;
-    }
-
-    .rotating-emojis span:nth-child(2) {
-        animation-delay: 1s;
-    }
-    .rotating-emojis span:nth-child(3) {
-        animation-delay: 2s;
-    }
-
-    @keyframes rotateEmoji {
-        0% {
-            transform: rotate(0deg);
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://mir-kliparta.com/uploads/posts/2013-07/1373889765_1b5jvritfjr69wy.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
         }
-        100% {
-            transform: rotate(360deg);
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            overflow: hidden;
+            pointer-events: none;
         }
-    }
 
-    button {
-        margin-bottom: 40px;
-        padding: 18px 40px;
-        font-size: 22px;
-        border: none;
-        border-radius: 35px;
-        background-color: #ffd6e0;
-        color: #2c3e50;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s;
-        font-family: 'cursive';
-        width: 100%;
-        max-width: 320px;
-    }
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: transparent url('https://99px.ru/sstorage/86/2016/03/image_862903162236248828026.gif') repeat;
+            background-size: contain;
+            opacity: 0.3;
+            animation: moveStars 60s linear infinite;
+        }
 
-    button:hover {
-        background-color: #ffc0cb;
-    }
+        @keyframes moveStars {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
 
-    .message {
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 25px;
-        border-radius: 25px;
-        color: #fff;
-        font-size: 22px;
-        text-align: center;
-        opacity: 0;
-        animation: fadeIn 1s ease-in-out forwards;
-        line-height: 1.6;
-        max-width: 90%;
-        margin-bottom: 20px;
-        z-index: 1;
-    }
+        .card {
+            position: relative;
+            width: 90%;
+            max-width: 420px;
+            min-height: 580px; /* вместо фиксированной height */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 30px 20px; /* уменьшили слева/справа */
+            gap: 20px;
+            box-sizing: border-box;
+        }
 
-    @keyframes fadeIn {
-        0% {
+        .rotating-emojis {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .rotating-emojis span {
+            display: inline-block;
+            animation: rotateEmoji 3s linear infinite;
+            font-size: 36px;
+        }
+
+        .rotating-emojis span:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .rotating-emojis span:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes rotateEmoji {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            margin-bottom: 40px;
+            padding: 18px 40px;
+            font-size: 22px;
+            border: none;
+            border-radius: 35px;
+            background-color: #ffd6e0;
+            color: #2c3e50;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'cursive';
+            width: 100%;
+            max-width: 320px;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #ffc0cb;
+        }
+
+        .message {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 25px 15px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
             opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            line-height: 1.5;
+            max-width: 90%;
+            margin-bottom: 20px;
+            z-index: 1;
+            word-wrap: break-word;
         }
-        100% {
-            opacity: 1;
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
-    }
+
+        /* Адаптация под маленькие экраны */
+        @media (max-width: 400px) {
+            .card {
+                min-height: auto;
+                padding: 20px 15px;
+            }
+            button {
+                font-size: 18px;
+                padding: 15px 25px;
+                max-width: 100%;
+            }
+            .message {
+                font-size: 18px;
+                padding: 20px 12px;
+            }
+            .rotating-emojis span {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
