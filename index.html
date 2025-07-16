@@ -5,101 +5,136 @@
     <title>Спокойной ночи, Марсель 🌙</title>
     <style>
      body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:url('https://mir-kliparta.com/uploads/posts/2013-07/1373889765_1b5jvritfjr69wy.jpeg');
-    background-size: cover;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-}
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:url('https://mir-kliparta.com/uploads/posts/2013-07/1373889765_1b5jvritfjr69wy.jpeg');
+        background-size: cover;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+        pointer-events: none;
+    }
 
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            overflow: hidden;
+    .stars::after {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: transparent url('https://99px.ru/sstorage/86/2016/03/image_862903162236248828026.gif') repeat;
+        background-size: contain;
+        opacity: 0.3;
+        animation: moveStars 60s linear infinite;
+    }
+
+    @keyframes moveStars {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+    }
+
+    .card {
+        position: relative;
+        width: 420px;
+        height: 580px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px;
+        gap: 20px; /* расстояние между элементами */
+    }
+
+    .rotating-emojis {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .rotating-emojis span {
+        display: inline-block;
+        animation: rotateEmoji 3s linear infinite;
+        font-size: 36px;
+    }
+
+    .rotating-emojis span:nth-child(2) {
+        animation-delay: 1s;
+    }
+    .rotating-emojis span:nth-child(3) {
+        animation-delay: 2s;
+    }
+
+    @keyframes rotateEmoji {
+        0% {
+            transform: rotate(0deg);
         }
-
-        .stars::after {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: transparent url('https://99px.ru/sstorage/86/2016/03/image_862903162236248828026.gif') repeat;
-            background-size: contain;
-            opacity: 0.3;
-            animation: moveStars 60s linear infinite;
+        100% {
+            transform: rotate(360deg);
         }
+    }
 
-        @keyframes moveStars {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
-        }
+    button {
+        margin-bottom: 40px;
+        padding: 18px 40px;
+        font-size: 22px;
+        border: none;
+        border-radius: 35px;
+        background-color: #ffd6e0;
+        color: #2c3e50;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-family: 'cursive';
+        width: 100%;
+        max-width: 320px;
+    }
 
-        .card {
-            position: relative;
-            width: 350px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 20px;
-        }
+    button:hover {
+        background-color: #ffc0cb;
+    }
 
-        button {
-            margin-bottom: 30px;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            background-color: #ffd6e0;
-            color: #2c3e50;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'cursive';
-        }
+    .message {
+        position: absolute;
+        top: 28%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 25px;
+        border-radius: 25px;
+        color: #fff;
+        font-size: 22px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+        line-height: 1.6;
+        max-width: 90%;
+        z-index: 1;
+    }
 
-        button:hover {
-            background-color: #ffc0cb;
-        }
-
-        .message {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 20px;
-            color: #fff;
-            font-size: 20px;
-            text-align: center;
+    @keyframes fadeIn {
+        0% {
             opacity: 0;
-            animation: fadeIn 1s ease-in-out forwards;
+            transform: translate(-50%, -30px);
         }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
+        100% {
+            opacity: 1;
+            transform: translate(-50%, 0);
         }
+    }
     </style>
 </head>
 <body>
@@ -107,6 +142,11 @@
 <div class="stars"></div>
 
 <div class="card">
+    <div class="rotating-emojis">
+        <span>😴</span>
+        <span>💤</span>
+        <span>🌙</span>
+    </div>
     <button onclick="showMessage()">🌙 Нажми перед сном 💫</button>
 </div>
 
